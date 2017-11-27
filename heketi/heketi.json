@@ -1,0 +1,43 @@
+{
+       "_port_comment": "Heketi Server Port Number",
+       "port" : "8080",
+
+       "_use_auth": "Enable JWT authorization. Please enable for deployment",
+       "use_auth" : false,
+
+       "_jwt" : "Private keys for access",
+       "jwt" : {
+               "_admin" : "Admin has access to all APIs",
+               "admin" : {
+                       "key" : "My Secret"
+               },
+               "_user" : "User only has access to /volumes endpoint",
+               "user" : {
+                       "key" : "My Secret"
+               }
+       },
+
+       "_glusterfs_comment": "GlusterFS Configuration",
+       "glusterfs" : {
+
+               "_executor_comment": "Execute plugin. Possible choices: mock, ssh",
+               "executor" : "mock",
+
+               "sshexec": {
+                 "rebalance_on_expansion": true
+               },
+               "kubeexec": {
+                 "rebalance_on_expansion": true
+               },
+
+               "_db_comment": "Database file name",
+               "db" : "/var/lib/heketi/heketi.db",
+
+               "_auto_create_block_hosting_volume": "Creates Block Hosting volumes automatically if not found or exsisting volume exhausted",
+               "auto_create_block_hosting_volume": true,
+
+               "_block_hosting_volume_size": "New block hosting volume will be created in size mentioned, This is considered only if auto-create is enabled.",
+               "block_hosting_volume_size": 500
+       }
+}
+
